@@ -112,7 +112,7 @@ public class Main {
         } catch (Exception e) {
             ui.showToUser(e.getMessage());
             throw new RuntimeException(e);
-        }
+        } 
     }
 
     /**

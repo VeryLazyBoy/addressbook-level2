@@ -11,6 +11,7 @@ import javax.xml.bind.Unmarshaller;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -27,7 +28,7 @@ public class StorageFile {
 
     /** Default file path used if the user doesn't provide the file name. */
     public static final String DEFAULT_STORAGE_FILEPATH = "addressbook.xml";
-
+    public static boolean firstCreated = true;
     /* Note: Note the use of nested classes below.
      * More info https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html
      */
@@ -96,7 +97,16 @@ public class StorageFile {
         /* Note: Note the 'try with resource' statement below.
          * More info: https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
          */
-        try (final Writer fileWriter =
+    	AddressBook empty = new AddressBook();
+        File f = path.toFile();
+        if (!f.exists() && StorageFile.firstCreated) {
+        	StorageFile.firstCreated = false;
+        } else if (!f.exists() && !StorageFile.firstCreated) {
+        	throw new StorageOperationException(path + "has been deleted");
+        } else {
+        	;
+        }
+    	try (final Writer fileWriter =
                      new BufferedWriter(new FileWriter(path.toFile()))) {
 
             final AdaptedAddressBook toSave = new AdaptedAddressBook(addressBook);
