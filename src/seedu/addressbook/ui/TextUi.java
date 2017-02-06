@@ -63,7 +63,7 @@ public class TextUi {
      */
     public String getUserCommand() {
         String askForInput = Formatter.askForInput();
-    	out.print(askForInput);
+        out.print(askForInput);
         String fullInputLine = in.nextLine();
 
         // silently consume all ignored lines
@@ -84,19 +84,19 @@ public class TextUi {
 
     public void showGoodbyeMessage() {
         String[] goodbyeMessage = Formatter.getGoodbyeMessage();
-    	showToUser(goodbyeMessage);
+        showToUser(goodbyeMessage);
     }
 
 
     public void showInitFailedMessage() {
-    	String[] initFailedMessage = Formatter.getInitFailedMessage();
+        String[] initFailedMessage = Formatter.getInitFailedMessage();
         showToUser(initFailedMessage);
     }
 
     /** Shows message(s) to the user */
     public void showToUser(String... message) {
         for (String m : message) {
-        	String formattedMsg = Formatter.addPrefix(m);
+            String formattedMsg = Formatter.addPrefix(m);
             out.println(formattedMsg);
         }
     }
