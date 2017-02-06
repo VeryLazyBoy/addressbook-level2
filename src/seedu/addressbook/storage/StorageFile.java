@@ -29,6 +29,7 @@ public class StorageFile {
     /** Default file path used if the user doesn't provide the file name. */
     public static final String DEFAULT_STORAGE_FILEPATH = "addressbook.xml";
     public static boolean firstCreated = true;
+    public static boolean isExistingAtFirst = true;
     /* Note: Note the use of nested classes below.
      * More info https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html
      */
@@ -99,12 +100,12 @@ public class StorageFile {
          */
     	AddressBook empty = new AddressBook();
         File f = path.toFile();
-        if (!f.exists() && StorageFile.firstCreated) {
-        	StorageFile.firstCreated = false;
-        } else if (!f.exists() && !StorageFile.firstCreated) {
-        	throw new StorageOperationException(path + "has been deleted");
-        } else {
-        	;
+        if (!f.exists()) {
+            if (StorageFile.isExistingAtFirst || !StorageFile.firstCreated) {
+                throw new StorageOperationException(path + "has been deleted");
+            } else {
+                StorageFile.firstCreated = false;
+            }
         }
     	try (final Writer fileWriter =
                      new BufferedWriter(new FileWriter(path.toFile()))) {
@@ -145,6 +146,7 @@ public class StorageFile {
 
         // create empty file if not found
         } catch (FileNotFoundException fnfe) {
+            StorageFile.isExistingAtFirst = false;
             final AddressBook empty = new AddressBook();
             save(empty);
             return empty;
