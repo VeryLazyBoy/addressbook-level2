@@ -8,12 +8,12 @@ import seedu.addressbook.data.exception.IllegalValueException;
  */
 public class Address {
 
-	private Block block;
-	private Street street;
-	private Unit unit;
-	private PostalCode postalCode;
+    private Block block;
+    private Street street;
+    private Unit unit;
+    private PostalCode postalCode;
     
-	public static final String EXAMPLE = "123, Clementi Ave 3, #12-34, 231534";
+    public static final String EXAMPLE = "123, Clementi Ave 3, #12-34, 231534";
     //to do 
     public static final String MESSAGE_ADDRESS_CONSTRAINTS = "Person addresses should be like 123, Clementi Ave 3, #12-34, 231534";
 
@@ -27,17 +27,17 @@ public class Address {
      * @throws IllegalValueException if given address string is invalid.
      */
     public Address(String address, boolean isPrivate) throws IllegalValueException {
-    	String trimmedAddress = address.trim();
-    	String[] splittedAddress = trimmedAddress.split(",");
+        String trimmedAddress = address.trim();
+        String[] splittedAddress = trimmedAddress.split(",");
         this.isPrivate = isPrivate;
         if (!isValidAddress(splittedAddress)) {
             throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
         } else {
-        	block = new Block(splittedAddress[0].trim());
-        	street = new Street(splittedAddress[1].trim());
-        	unit = new Unit(splittedAddress[2].trim());
-        	postalCode = new PostalCode(splittedAddress[3].trim());
-        	
+            block = new Block(splittedAddress[0].trim());
+            street = new Street(splittedAddress[1].trim());
+            unit = new Unit(splittedAddress[2].trim());
+            postalCode = new PostalCode(splittedAddress[3].trim());
+            
         }
         this.value = trimmedAddress;
     }
@@ -48,8 +48,8 @@ public class Address {
     public static boolean isValidAddress(String[] test) {
         boolean isValidAddress = false;
         if (test.length == 4 && Block.isValid(test[0].trim()) && Street.isValid(test[1].trim()) 
-        		&& Unit.isValid(test[2].trim()) && PostalCode.isValid(test[3].trim())) {
-        	isValidAddress = true;
+                && Unit.isValid(test[2].trim()) && PostalCode.isValid(test[3].trim())) {
+            isValidAddress = true;
         }
         return isValidAddress;
     }
