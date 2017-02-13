@@ -79,6 +79,13 @@ public class Name {
          String otherName = other.fullName;
          
          if (thisName.toUpperCase().equals(otherName.toUpperCase())) {
+             return true;
+         }
+         
+         List<String> upperThisNames = Arrays.asList(thisName.toUpperCase().split(" "));
+         List<String> upperOtherNames = Arrays.asList(otherName.toUpperCase().split(" "));
+         
+         if (upperThisNames.containsAll(upperOtherNames)) {
              isSimilar = true;
          }
          
