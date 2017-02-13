@@ -70,9 +70,18 @@ public class Name {
      */
      public boolean isSimilar(Name other) { 
          boolean isSimilar = false;
+         
          if (other == null) {
-             isSimilar =  true;
+             return true;
          }
+         
+         String thisName = this.fullName;
+         String otherName = other.fullName;
+         
+         if (thisName.toUpperCase().equals(otherName.toUpperCase())) {
+             isSimilar = true;
+         }
+         
          return isSimilar;
      }
 }
