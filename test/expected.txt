@@ -303,3 +303,14 @@
 || Good bye!
 || ===================================================
 || ===================================================
+|| The history of tags modificaition:
+|| + Esther Potato [starchy]
+|| - Charlie Dickson [friends]
+|| + Betsy Choo [secretive]
+|| + Charlie Dickson [friends]
+|| - Charlie Dickson [school]
+|| - Esther Potato [starchy]
+|| + Esther Potato [tubers]
+|| - Esther Potato [tubers]
+|| + Dickson Ee [friends]
+|| + Charlie Dickson [school]
