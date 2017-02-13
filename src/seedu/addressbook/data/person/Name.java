@@ -59,5 +59,17 @@ public class Name {
     public int hashCode() {
         return fullName.hashCode();
     }
-
+    
+    /**
+     * Returns true of the other name is very similar to this name.
+     * Two names are considered similar if 
+     * 1. the other name is null, e.g. null
+     * 2. the other name is in a different case, e.g.John K SMITh
+     * 3. the other name is in a different order, e.g.Smith John K
+     * 4. the other name is a subset/superset, e.g.John Smith, John K M Smith
+     */
+     public boolean isSimilar(Name other) { 
+         boolean isSimilar = false;
+         return isSimilar;
+     }
 }
