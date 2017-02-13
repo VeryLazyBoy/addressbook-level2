@@ -70,6 +70,9 @@ public class Name {
      */
      public boolean isSimilar(Name other) { 
          boolean isSimilar = false;
+         if (other == null) {
+             isSimilar =  true;
+         }
          return isSimilar;
      }
 }
