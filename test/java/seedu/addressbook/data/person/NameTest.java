@@ -22,6 +22,10 @@ public class NameTest {
         
         //superset
         assertSimilar(new Name("Frank Liu"), new Name("Frank Liu Internship"));
+        
+        //more tests
+        assertNotSimilar(new Name("Roy Luo"), new Name("Frank Liu"));
+        assertSimilar(new Name("Frank Liu"), new Name("liu frank internship"));
     }
     
     public void assertSimilar(Name name, Name other) {

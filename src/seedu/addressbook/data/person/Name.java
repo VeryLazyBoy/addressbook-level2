@@ -75,20 +75,35 @@ public class Name {
              return true;
          }
          
+         isSimilar = isSimilarIgnoringCase(other) || isSubsetOrSuperset(other);
+         
+         return isSimilar;
+     }
+     
+     /**
+      *check if the names are similar in a case-insensitive manner 
+      *
+      */
+     public boolean isSimilarIgnoringCase(Name other) {
+         String upperThisName = this.fullName.toUpperCase();
+         String upperOtherName = other.fullName.toUpperCase();
+         return upperThisName.equals(upperOtherName);
+     }
+     
+     /**
+      *check if this name is a subset or superset of the other name 
+      *
+      */
+     public boolean isSubsetOrSuperset(Name other) {
          String thisName = this.fullName;
          String otherName = other.fullName;
-         
-         if (thisName.toUpperCase().equals(otherName.toUpperCase())) {
-             return true;
-         }
-         
          List<String> upperThisNames = Arrays.asList(thisName.toUpperCase().split(" "));
          List<String> upperOtherNames = Arrays.asList(otherName.toUpperCase().split(" "));
          
          if (upperThisNames.containsAll(upperOtherNames) || upperOtherNames.containsAll(upperThisNames)) {
-             isSimilar = true;
+             return true;
+         } else {
+             return false;
          }
-         
-         return isSimilar;
      }
 }
