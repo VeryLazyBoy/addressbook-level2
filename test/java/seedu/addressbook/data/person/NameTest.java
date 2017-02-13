@@ -16,6 +16,12 @@ public class NameTest {
         
         //different order
         assertSimilar(new Name("Frank Liu"), new Name("Liu Frank"));
+        
+        //subset
+        assertSimilar(new Name("Frank Liu"), new Name("Frank"));
+        
+        //superset
+        assertSimilar(new Name("Frank Liu"), new Name("Frank Liu Internship"));
     }
     
     public void assertSimilar(Name name, Name other) {
