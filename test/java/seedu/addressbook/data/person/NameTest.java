@@ -13,6 +13,9 @@ public class NameTest {
         
         //different case
         assertSimilar(new Name("Frank Liu"), new Name("FRANK LIU"));
+        
+        //different order
+        assertSimilar(new Name("Frank Liu"), new Name("Liu Frank"));
     }
     
     public void assertSimilar(Name name, Name other) {
