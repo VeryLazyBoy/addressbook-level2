@@ -100,10 +100,6 @@ public class Name {
          List<String> upperThisNames = Arrays.asList(thisName.toUpperCase().split(" "));
          List<String> upperOtherNames = Arrays.asList(otherName.toUpperCase().split(" "));
          
-         if (upperThisNames.containsAll(upperOtherNames) || upperOtherNames.containsAll(upperThisNames)) {
-             return true;
-         } else {
-             return false;
-         }
+         return upperThisNames.containsAll(upperOtherNames) || upperOtherNames.containsAll(upperThisNames);
      }
 }
